@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using ClownCollege.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +11,7 @@ namespace ClownCollege.Controllers
   {
     private readonly ClownCollegeContext _db;
 
-    public StudentsController()
+    public StudentsController(ClownCollegeContext db)
     {
       _db = db;
     }
@@ -79,6 +79,24 @@ namespace ClownCollege.Controllers
     {
       var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
       _db.Students.Remove(thisStudent);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddCourse(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Name");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult AddCourse(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+      _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+      }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

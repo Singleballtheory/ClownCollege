@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ClownCollege.Controllers
 {
-  public class CoursesController : Controllers
+  public class CoursesController : Controller
   {
     private readonly ClownCollegeContext _db;
 
