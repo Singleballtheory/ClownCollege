@@ -2,6 +2,17 @@
   Layout = "_Layout";
 }
 
+<style>
+body {
+background: url("/../../img/clown.jpg")no-repeat fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+</style>
+
 <h1>Welcome to Clown College!</h1>
 <p>@Html.ActionLink("See all students", "Index", "Students")</p> 
 <p>@Html.ActionLink("See available courses", "Index", "Courses")</p>
+<p>@Html.ActionLink("See available departments", "Index", "Departments")</p>

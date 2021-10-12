@@ -30,6 +30,18 @@ else
     }
   }
   </ul>
+  <h4>Student's Major:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities2)
+  {
+    <li>@join.Department.Name</li>
+    @using (Html.BeginForm("DeleteDepartment", "Students"))
+    {
+      @Html.Hidden("joinId", @join.DepartmentStudentId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
 }
 
 <p>@Html.ActionLink("Add a Course", "AddCourse", new { id = Model.StudentId })</p>

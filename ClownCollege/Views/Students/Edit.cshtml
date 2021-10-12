@@ -11,17 +11,20 @@
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.StudentId)
-
+  <br>
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name)
-
+  <br>
   @Html.LabelFor(model => model.EnrollmentDate)
   @Html.EditorFor(model => model.EnrollmentDate)
-
-  @Html.Label("Select course")
+  <br>
+  @* @Html.Label("Select course")
   @Html.DropDownList("CourseId")
-
+  <br>
+  @Html.Label("Select department")
+  @Html.DropDownList("DepartmentId")
+  <br> *@
   <input type="submit" value="Save" />
 }
-
+<hr>
 <p>@Html.ActionLink("Back to list", "Index")</p>
